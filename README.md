@@ -12,7 +12,7 @@ Relevant recent papers:
 I implemented a Bernoulli random slopes model using adaptive quadrature.
 Files:
   
-  - `bernoulli-randomslope.cpp`: functions to be loaded into `R` using `Rcpp::sourceCpp`. Only `jointloglik` would
+  - `examples/cpp/bernoulli-randomslope.cpp`: functions to be loaded into `R` using `Rcpp::sourceCpp`. Only `jointloglik` would
     need to be modified for implementing alternative response distributions and random effects structures.
     The rest of the code is `boilerplate`.
       - `jointloglik`: function to compute the negative joint log-likelihood of data and random effects.
@@ -35,7 +35,7 @@ Files:
       - `aqmlgR`: compute the gradient of `aqmlf` using `CppAD` and export it to `R`. This is pretty slow because 2nd-order
         AD is already used within `aqmlf`, but it enables the use of `optim(..., method = "L-BFGS-B")` for box-constrained
         quasi-Newton minimization in `R` so I use it for now.
-  - `bernoulli-slopes.R`: `R` example of generating data and fitting the random slopes model.
+  - `examples/bernoulli-slopes.R`: `R` example of generating data and fitting the random slopes model.
       - The data simulation and model fitting functions are self-explanatory.
       - `get_results` generates data and fits the model with order `k = 1` using both `lme4::glmer` and my
         implementation, as well as for `k = 5, 15, 25` using my implementation. (Note: "order" means "`k` points 'per dimension'";
